@@ -1,0 +1,20 @@
+Create a project based on Spring Boot using:
+
+    spring-boot-starter-web
+    lombok
+
+Implement a controller (REST) with an endpoint GET/api/random-boolean that returns a value using the RandomBooleanProvider bean and the getValue method. When making several HTTP requests in a row, let endpoint return a different value.
+
+Do this task without modifying the body of the RandomBooleanProvider class.
+
+import org.springframework.stereotype.Component;
+import java.util.Random;
+
+@Component
+public class RandomBooleanProvider {
+  private final boolean value = new Random().nextBoolean();
+
+  public boolean getValue() {
+    return value;
+  }
+}

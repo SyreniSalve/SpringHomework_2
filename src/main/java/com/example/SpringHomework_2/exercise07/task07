@@ -1,0 +1,34 @@
+Create a project based on Spring Boot using:
+
+    spring-boot-starter-web
+    lombok
+
+Create an endpoint GET under the URI /api/pairs/{name}that will return the following object (as JSON):
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.Map;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class NamedPairs {
+  private String name;
+  Map<String, String> pairs;
+}
+
+For this object, the value of the name field should come from the variable part of the path, and the pairs field should always be an empty map. This object should be serialized as follows:
+
+    in the dev profile:
+        fields with the value null are not serialized, but empty collections do
+        field naming follows the snake_case convention
+
+    in the production profile:
+        null fields and empty queues are not serialized
+        field naming uses the camelCase convention
+
+Confirm correct behavior by running the application in the appropriate profile and sending the appropriate HTTP request.
